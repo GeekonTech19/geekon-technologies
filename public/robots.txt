@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://geekon-technologies.onrender.com/sitemap.xml
