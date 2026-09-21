@@ -1,519 +1,641 @@
 import { useState } from "react";
 
+const facebookUrl = "https://web.facebook.com/GeekonTechnologies";
+const instagramUrl = "https://www.instagram.com/geekon.technologies";
+const whatsappUrl = "https://wa.me/2348136695064";
+const recoveryUrl = "https://recovery-plus-frontend.onrender.com";
+
+function FacebookIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="currentColor"
+    >
+      <path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v3H6v4h3v8h4v-8h3.2l.8-4H13V9c0-.6.4-1 1-1Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="currentColor"
+    >
+      <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L.2 24l6.5-1.7c1.7.9 3.5 1.3 5.4 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.3ZM12.1 21.5c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.8 1 1-3.7-.2-.3a9.6 9.6 0 0 1-1.5-5.2c0-5.3 4.3-9.6 9.6-9.6 2.6 0 5 1 6.8 2.8a9.5 9.5 0 0 1 2.8 6.8c0 5.3-4.3 9.7-9.6 9.7Zm5.3-7.2c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.4-3.9-3.2-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.3 3.6 5.7 5 .8.3 1.4.5 1.9.6.8.2 1.5.2 2 .1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3Z" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14" />
+      <path d="m13 6 6 6-6 6" />
+    </svg>
+  );
+}
+
+function ExternalLinkIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="15"
+      height="15"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M14 5h5v5" />
+      <path d="m10 14 9-9" />
+      <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" />
+    </svg>
+  );
+}
+
 const services = [
   {
     number: "01",
     title: "Web & App Development",
-    text: "Modern websites and web applications built around your business, audience and goals.",
+    description:
+      "Modern, responsive websites and web applications designed around real business needs.",
   },
   {
     number: "02",
     title: "Software Solutions",
-    text: "Practical software products designed to solve real problems and grow with your organisation.",
+    description:
+      "Practical digital systems that help businesses streamline operations and work smarter.",
   },
   {
     number: "03",
     title: "AI & Automation",
-    text: "Useful AI-powered solutions and workflows that help businesses work smarter and move faster.",
+    description:
+      "Intelligent tools and automation that reduce repetitive work and unlock new possibilities.",
   },
   {
     number: "04",
     title: "Digital Media",
-    text: "Creative digital experiences, graphics and media solutions that help brands communicate better.",
+    description:
+      "Creative digital experiences, graphics and technology-driven media solutions.",
   },
 ];
 
 const products = [
   {
     title: "Recovery+",
-    tag: "Geekon Digital Product",
-    text: "A recovery accountability and wellbeing platform designed to help people track daily progress, goals, habits and achievements.",
-    href: "#portfolio",
+    description:
+      "A digital recovery accountability and companionship platform helping people build healthier routines and track progress.",
+    tag: "Digital Product",
+    link: recoveryUrl,
   },
   {
     title: "Your Idea",
-    tag: "Geekon Product Lab",
-    text: "Have an idea for a digital product? We can help turn the concept into something useful, practical and ready for real users.",
-    href: "#contact",
+    description:
+      "Have an idea for a digital product? Geekon Technologies can help transform the concept into something real.",
+    tag: "Your Idea",
+    link: "#contact",
   },
 ];
 
-function App() {
+export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div className="site">
-      {/* NAVIGATION */}
-      <header className="navbar">
-        <a
-          className="brand"
-          href="#home"
-          onClick={closeMenu}
-          aria-label="Geekon Technologies home"
-        >
-          <img
-            src="/got-logo.png"
-            alt="Geekon Technologies logo"
-          />
-
-          <span>
-            <strong>GEEKON</strong>
-            <small>TECHNOLOGIES</small>
-          </span>
-        </a>
-
-        <button
-          className="menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-
-        <nav
-          id="primary-navigation"
-          className={menuOpen ? "nav-links open" : "nav-links"}
-          aria-label="Primary navigation"
-        >
-          <a href="#home" onClick={closeMenu}>
-            Home
-          </a>
-
-          <a href="#about" onClick={closeMenu}>
-            About
-          </a>
-
-          <a href="#services" onClick={closeMenu}>
-            Services
-          </a>
-
-          <a href="#products" onClick={closeMenu}>
-            Products
-          </a>
-
-          <a href="#portfolio" onClick={closeMenu}>
-            Portfolio
-          </a>
-
+    <div className="site-shell">
+      <header className="site-header">
+        <div className="container nav-container">
           <a
-            className="nav-cta"
-            href="#contact"
+            href="#home"
+            className="brand"
+            aria-label="Geekon Technologies home"
             onClick={closeMenu}
           >
-            Start a Project
+            <img
+              src="/got-logo.png"
+              alt="Geekon Technologies logo"
+              className="brand-logo"
+            />
+            <span className="brand-name">
+              Geekon<span>Technologies</span>
+            </span>
           </a>
-        </nav>
+
+          <button
+            type="button"
+            className={`menu-toggle ${menuOpen ? "active" : ""}`}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          <nav
+            id="primary-navigation"
+            className={`site-nav ${menuOpen ? "open" : ""}`}
+            aria-label="Primary navigation"
+          >
+            <a href="#home" onClick={closeMenu}>
+              Home
+            </a>
+            <a href="#about" onClick={closeMenu}>
+              About
+            </a>
+            <a href="#services" onClick={closeMenu}>
+              Services
+            </a>
+            <a href="#products" onClick={closeMenu}>
+              Products
+            </a>
+            <a href="#portfolio" onClick={closeMenu}>
+              Portfolio
+            </a>
+            <a
+              href="#contact"
+              className="nav-cta"
+              onClick={closeMenu}
+            >
+              Start a Project
+            </a>
+          </nav>
+        </div>
       </header>
 
       <main>
-        {/* HERO */}
-        <section className="hero" id="home" aria-labelledby="hero-title">
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <div className="eyebrow">
-                <span />
-                Technology • Creativity • Impact
-              </div>
+        <section id="home" className="hero-section" aria-labelledby="hero-title">
+          <div className="container hero-grid">
+            <div className="hero-content">
+              <p className="eyebrow">Technology • Creativity • Innovation</p>
 
               <h1 id="hero-title">
-                We turn ideas into{" "}
-                <em>digital solutions.</em>
+                We turn ideas into
+                <span> digital solutions.</span>
               </h1>
 
-              <p className="hero-text">
-                Geekon Technologies is a Nigerian technology company
-                building modern websites, web applications, software,
-                AI solutions and digital products that help businesses
-                and people move forward.
+              <p className="hero-description">
+                Geekon Technologies is a Nigerian technology company building
+                modern websites, web applications, software, AI solutions and
+                digital products.
               </p>
 
               <div className="hero-actions">
-                <a className="button primary" href="#contact">
-                  Start a Project <span>↗</span>
+                <a href="#contact" className="button button-primary">
+                  Start a Project
+                  <ArrowIcon />
                 </a>
 
-                <a className="button secondary" href="#portfolio">
-                  Explore Our Work
+                <a href="#services" className="button button-secondary">
+                  Explore Services
                 </a>
               </div>
 
-              <div className="hero-proof" aria-label="Geekon Technologies capabilities">
-                <div>
-                  <strong>Web</strong>
-                  <span>Development</span>
-                </div>
-
-                <div>
-                  <strong>AI</strong>
-                  <span>Solutions</span>
-                </div>
-
-                <div>
-                  <strong>Digital</strong>
-                  <span>Products</span>
-                </div>
+              <div className="hero-trust">
+                <span className="trust-line" />
+                <span>Built in Nigeria. Designed for the future.</span>
               </div>
             </div>
 
-            <div
-              className="hero-visual"
-              aria-label="Geekon Technologies digital product development"
-            >
-              <div className="orb orb-one" />
-              <div className="orb orb-two" />
-
-              <div className="visual-card main-card">
-                <div className="card-top">
-                  <span>GEEKON / DIGITAL LAB</span>
-                  <span>● ONLINE</span>
+            <div className="hero-visual" aria-hidden="true">
+              <div className="hero-card hero-card-main">
+                <div className="hero-card-top">
+                  <span className="status-dot" />
+                  <span>Digital Solutions</span>
                 </div>
 
-                <div className="code-lines">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                  <i />
+                <div className="hero-code">
+                  <span className="code-line long" />
+                  <span className="code-line medium" />
+                  <span className="code-line short" />
+                  <span className="code-line long" />
+                  <span className="code-line medium" />
                 </div>
 
-                <div className="visual-bottom">
+                <div className="hero-card-footer">
                   <span>IDEA</span>
-                  <b>→</b>
-                  <span>BUILD</span>
-                  <b>→</b>
-                  <span>IMPACT</span>
+                  <ArrowIcon />
+                  <span>PRODUCT</span>
                 </div>
               </div>
 
-              <div className="floating-card">
-                <span className="floating-icon">✦</span>
+              <div className="floating-card floating-card-one">
+                <strong>01</strong>
+                <span>Innovation</span>
+              </div>
 
-                <div>
-                  <strong>Built with purpose</strong>
-                  <small>Technology that solves problems.</small>
-                </div>
+              <div className="floating-card floating-card-two">
+                <strong>+</strong>
+                <span>Technology</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ABOUT */}
-        <section
-          className="intro section"
-          id="about"
-          aria-labelledby="about-title"
-        >
-          <div className="section-label">01 — WHO WE ARE</div>
-
-          <div className="intro-content">
-            <h2 id="about-title">
-              Technology should <span>make things better.</span>
-            </h2>
-
+        <section id="about" className="section about-section" aria-labelledby="about-title">
+          <div className="container two-column">
             <div>
+              <p className="section-label">01 / About Geekon</p>
+              <h2 id="about-title">
+                Technology should
+                <span> make things better.</span>
+              </h2>
+            </div>
+
+            <div className="about-copy">
               <p>
-                Geekon Technologies is a Nigerian technology company
-                focused on creating useful, modern and accessible
-                digital solutions for businesses, organisations and
-                individuals.
+                Geekon Technologies is focused on creating practical digital
+                solutions that solve real problems. From websites and software
+                systems to AI-powered tools and digital products, we combine
+                technology with creativity to build useful experiences.
               </p>
 
               <p>
-                We combine software development, web technology,
-                artificial intelligence, design and creative thinking
-                to help turn ideas into working digital solutions.
+                We work with businesses, organizations and individuals who want
+                to turn ideas into reliable digital products.
               </p>
 
-              <a className="text-link" href="#contact">
-                Work with Geekon <span>→</span>
+              <a href="#contact" className="text-link">
+                Let's build something useful
+                <ArrowIcon />
               </a>
             </div>
           </div>
         </section>
 
-        {/* SERVICES */}
         <section
-          className="services section"
           id="services"
+          className="section services-section"
           aria-labelledby="services-title"
         >
-          <div className="section-heading">
-            <div>
-              <div className="section-label">02 — WHAT WE DO</div>
+          <div className="container">
+            <div className="section-heading">
+              <div>
+                <p className="section-label">02 / What We Do</p>
+                <h2 id="services-title">
+                  Digital solutions
+                  <span> we build.</span>
+                </h2>
+              </div>
 
-              <h2 id="services-title">
-                Digital solutions we <span>build.</span>
-              </h2>
+              <p>
+                From your first idea to a working digital product, we help
+                bring technology and creativity together.
+              </p>
             </div>
 
-            <p>
-              From a first idea to a live digital product, we combine
-              technology and creativity to build practical solutions
-              with purpose.
-            </p>
-          </div>
-
-          <div className="service-grid">
-            {services.map((service) => (
-              <article
-                className="service-card"
-                key={service.number}
-              >
-                <span className="service-number">
-                  {service.number}
-                </span>
-
-                <div
-                  className="service-arrow"
-                  aria-hidden="true"
-                >
-                  ↗
-                </div>
-
-                <h3>{service.title}</h3>
-
-                <p>{service.text}</p>
-              </article>
-            ))}
+            <div className="services-grid">
+              {services.map((service) => (
+                <article className="service-card" key={service.number}>
+                  <span className="service-number">{service.number}</span>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <a
+                    href="#contact"
+                    className="card-link"
+                    aria-label={`Learn more about ${service.title}`}
+                  >
+                    Discuss this service
+                    <ArrowIcon />
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* PRODUCTS */}
         <section
-          className="products section"
           id="products"
+          className="section products-section"
           aria-labelledby="products-title"
         >
-          <div className="section-label">03 — OUR PRODUCTS</div>
+          <div className="container">
+            <div className="section-heading">
+              <div>
+                <p className="section-label">03 / Our Products</p>
+                <h2 id="products-title">
+                  We don't just build for clients.
+                  <span> We build ideas.</span>
+                </h2>
+              </div>
 
-          <div className="products-heading">
-            <h2 id="products-title">
-              We don't just build for clients.{" "}
-              <span>We build ideas.</span>
-            </h2>
+              <p>
+                Geekon Technologies also develops its own digital products,
+                exploring ideas that can create meaningful impact.
+              </p>
+            </div>
 
-            <p>
-              Geekon also develops digital products that address
-              real-world needs and explore new ways technology can
-              create meaningful impact.
-            </p>
-          </div>
+            <div className="products-grid">
+              {products.map((product) => (
+                <article className="product-card" key={product.title}>
+                  <div className="product-card-top">
+                    <span className="product-tag">{product.tag}</span>
 
-          <div className="product-grid">
-            {products.map((product, index) => (
-              <article
-                className={
-                  index === 0
-                    ? "product-card featured"
-                    : "product-card"
-                }
-                key={product.title}
-              >
-                <div className="product-number">
-                  0{index + 1}
-                </div>
-
-                <div>
-                  <span className="product-tag">
-                    {product.tag}
-                  </span>
+                    {product.title === "Recovery+" && (
+                      <span className="product-status">LIVE</span>
+                    )}
+                  </div>
 
                   <h3>{product.title}</h3>
 
-                  <p>{product.text}</p>
+                  <p>{product.description}</p>
 
-                  <a
-                    href={product.href}
-                    className="text-link"
-                    aria-label={
-                      index === 0
-                        ? "Explore Recovery Plus"
-                        : "Start a project with Geekon Technologies"
-                    }
-                  >
-                    {index === 0
-                      ? "Explore Recovery+"
-                      : "Start a project"}{" "}
-                    <span>→</span>
-                  </a>
-                </div>
-              </article>
-            ))}
+                  {product.title === "Recovery+" ? (
+                    <a
+                      href={product.link}
+                      className="button button-small"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit Recovery+
+                      <ExternalLinkIcon />
+                    </a>
+                  ) : (
+                    <a href={product.link} className="button button-small">
+                      Start with an idea
+                      <ArrowIcon />
+                    </a>
+                  )}
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* PORTFOLIO */}
         <section
-          className="portfolio section"
           id="portfolio"
+          className="section portfolio-section"
           aria-labelledby="portfolio-title"
         >
-          <div className="section-heading">
-            <div>
-              <div className="section-label">
-                04 — SELECTED WORK
+          <div className="container">
+            <div className="portfolio-header">
+              <div>
+                <p className="section-label">04 / Portfolio</p>
+                <h2 id="portfolio-title">
+                  Built with purpose.
+                  <span> Built to grow.</span>
+                </h2>
               </div>
 
-              <h2 id="portfolio-title">
-                Built with <span>purpose.</span>
-              </h2>
+              <p>
+                A selection of digital work and products created by Geekon
+                Technologies.
+              </p>
             </div>
 
-            <p>
-              Every project starts with a problem worth solving and
-              ends with an experience people can actually use.
-            </p>
-          </div>
-
-          <div className="portfolio-grid">
-            <article className="portfolio-card recovery">
-              <div className="portfolio-top">
-                <span>GEEKON PRODUCT / 01</span>
-                <span>RECOVERY+</span>
-              </div>
+            <article className="portfolio-feature">
+              <div className="portfolio-number">01</div>
 
               <div className="portfolio-content">
-                <div className="portfolio-badge">
-                  FLAGSHIP PRODUCT
-                </div>
+                <p className="portfolio-category">Digital Product</p>
 
                 <h3>Recovery+</h3>
 
                 <p>
                   Recovery+ is a digital recovery accountability and
-                  wellbeing platform featuring daily check-ins,
-                  goals, progress tracking, achievements and
-                  community features.
+                  companionship platform designed to help users track daily
+                  progress, build positive routines and stay accountable.
                 </p>
 
                 <a
-                  href="https://recovery-plus-frontend.onrender.com"
+                  href={recoveryUrl}
                   target="_blank"
-                  rel="noreferrer"
-                  className="pill-link"
-                  aria-label="Visit the Recovery Plus application"
+                  rel="noopener noreferrer"
+                  className="text-link"
                 >
-                  Visit Recovery+ ↗
+                  View live product
+                  <ExternalLinkIcon />
                 </a>
               </div>
-            </article>
 
-            <article className="portfolio-card concept">
-              <div className="portfolio-top">
-                <span>YOUR PROJECT</span>
-                <span>GEEKON</span>
-              </div>
+              <div className="portfolio-visual" aria-hidden="true">
+                <div className="portfolio-screen">
+                  <div className="screen-header">
+                    <span>Recovery+</span>
+                    <span className="screen-dot" />
+                  </div>
 
-              <div className="portfolio-content">
-                <div className="portfolio-badge">
-                  LET'S BUILD
+                  <div className="screen-body">
+                    <span className="screen-line wide" />
+                    <span className="screen-line medium" />
+
+                    <div className="screen-stats">
+                      <div>
+                        <strong>07</strong>
+                        <span>Streak</span>
+                      </div>
+
+                      <div>
+                        <strong>86%</strong>
+                        <span>Score</span>
+                      </div>
+                    </div>
+
+                    <span className="screen-line wide" />
+                    <span className="screen-line short" />
+                  </div>
                 </div>
-
-                <h3>Your project could be next.</h3>
-
-                <p>
-                  Have a business challenge, website idea or digital
-                  product in mind? Let's explore it together and find
-                  the right path forward.
-                </p>
-
-                <a
-                  href="#contact"
-                  className="pill-link"
-                  aria-label="Start a conversation with Geekon Technologies"
-                >
-                  Start a conversation ↗
-                </a>
               </div>
             </article>
+
+            <div className="portfolio-next">
+              <span>02</span>
+              <p>Your project could be next.</p>
+              <a href="#contact" className="text-link">
+                Start a conversation
+                <ArrowIcon />
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* CONTACT */}
         <section
-          className="contact section"
           id="contact"
+          className="section contact-section"
           aria-labelledby="contact-title"
         >
-          <div className="contact-inner">
-            <div className="section-label">
-              05 — LET'S BUILD
+          <div className="container contact-grid">
+            <div>
+              <p className="section-label">05 / Let's Work Together</p>
+
+              <h2 id="contact-title">
+                Have an idea?
+                <span> Let's build it.</span>
+              </h2>
+
+              <p className="contact-description">
+                Tell us what you're thinking about. Whether you need a
+                website, application, software solution, AI tool or digital
+                product, we'd love to hear about it.
+              </p>
             </div>
-
-            <h2 id="contact-title">
-              Have an idea?
-              <br />
-              <span>Let's make it real.</span>
-            </h2>
-
-            <p>
-              Tell Geekon Technologies what you're building. We'll
-              start with the problem, the goal and the best path
-              forward.
-            </p>
 
             <div className="contact-actions">
               <a
-                className="button primary"
                 href="mailto:hello@geekontechnologies.com"
-                aria-label="Email Geekon Technologies"
+                className="contact-method"
               >
-                Email Geekon ↗
+                <span>Email</span>
+                <strong>hello@geekontechnologies.com</strong>
+                <ArrowIcon />
               </a>
 
               <a
-                className="button outline-light"
-                href="https://wa.me/2348136695064"
+                href={whatsappUrl}
+                className="contact-method"
                 target="_blank"
-                rel="noreferrer"
-                aria-label="Contact Geekon Technologies on WhatsApp"
+                rel="noopener noreferrer"
               >
-                WhatsApp Geekon ↗
+                <span>WhatsApp</span>
+                <strong>+234 813 669 5064</strong>
+                <ArrowIcon />
               </a>
-            </div>
-
-            <div className="contact-details">
-              <span>+234 813 669 5064</span>
-              <span>hello@geekontechnologies.com</span>
             </div>
           </div>
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="footer">
-        <div className="footer-brand">
-          <img
-            src="/got-logo.png"
-            alt="Geekon Technologies logo"
-          />
+      <footer className="site-footer">
+        <div className="container footer-main">
+          <div className="footer-brand">
+            <a
+              href="#home"
+              className="brand footer-brand-link"
+              aria-label="Geekon Technologies home"
+            >
+              <img
+                src="/got-logo.png"
+                alt="Geekon Technologies logo"
+                className="brand-logo"
+              />
 
-          <div>
-            <strong>GEEKON TECHNOLOGIES</strong>
-            <span>Technology • Creativity • Impact</span>
+              <span className="brand-name">
+                Geekon<span>Technologies</span>
+              </span>
+            </a>
+
+            <p>
+              Technology, creativity and innovation — building digital
+              solutions that make things better.
+            </p>
+
+            <div className="social-links" aria-label="Geekon Technologies social media">
+              <a
+                href={facebookUrl}
+                className="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Geekon Technologies on Facebook"
+                title="Facebook"
+              >
+                <FacebookIcon />
+                <span>Facebook</span>
+              </a>
+
+              <a
+                href={instagramUrl}
+                className="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Geekon Technologies on Instagram"
+                title="Instagram"
+              >
+                <InstagramIcon />
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="footer-links">
+            <div>
+              <h3>Explore</h3>
+              <a href="#about">About</a>
+              <a href="#services">Services</a>
+              <a href="#products">Products</a>
+              <a href="#portfolio">Portfolio</a>
+            </div>
+
+            <div>
+              <h3>Connect</h3>
+              <a href="#contact">Start a Project</a>
+
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
+                Facebook
+              </a>
+
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
 
-        <nav className="footer-links" aria-label="Footer navigation">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#products">Products</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div className="container footer-bottom">
+          <p>
+            © {new Date().getFullYear()} Geekon Technologies. All rights
+            reserved.
+          </p>
 
-        <p>
-          © {new Date().getFullYear()} Geekon Technologies. All
-          rights reserved.
-        </p>
+          <a href="#home" className="back-to-top">
+            Back to top
+            <ArrowIcon />
+          </a>
+        </div>
       </footer>
     </div>
   );
 }
-
-export default App;
